@@ -23,3 +23,13 @@
 * MongoDB
 * Mongoose
 * Socket.io
+
+## 도움을 주신 분
+* Vue.js: 장기효(캡틴판교) - 인프런
+* 자료구조, 알고리즘: 김태원 - 인프런
+* Node.js: 조현영 - 인프런
+* Git/Github: 강민철 - 인프런
+
+## 도움을 준 사이트
+* <a href="https://opentutorials.org/">생활코딩</a>
+* <a href="https://www.inflearn.com/">인프런</a>
