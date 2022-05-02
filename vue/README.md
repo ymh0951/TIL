@@ -1,5 +1,8 @@
 # Vue.js 공부방 ✏
-
+* Javascript
+* Vue.js
+* Vue-router
+* Vuex
 ## 도움을 주신 분
 장기효(캡틴판교) - 인프런 Vue.js 강의
 
