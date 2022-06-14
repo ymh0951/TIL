@@ -14,6 +14,7 @@
 * Webpack
 * Bootstrap
 * Pug
+* interactive
 
 ### Back-end Skills
 * Node.js
@@ -30,6 +31,7 @@
 * 자료구조, 알고리즘: 김태원 - 인프런
 * Node.js: 조현영 - 인프런
 * Git/Github: 강민철 - 인프런
+* Interactive 1분 코딩 - 인프런
 
 ## 도움을 준 사이트들 💎
 * <a href="https://opentutorials.org/">생활코딩</a>
