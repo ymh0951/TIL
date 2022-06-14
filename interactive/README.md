@@ -1,4 +1,4 @@
-# Vue.js 공부방 ✏
+# Interactive 공부방 ✏
 * CSS
 * Javascript
 * Interactive
