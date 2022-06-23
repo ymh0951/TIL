@@ -7,13 +7,13 @@
 * HTML5
 * CSS3
 * Javascript
+* TypeScript
 * jQuery
 * Vue.js
 * Vue-router
 * Vuex
 * Webpack
 * Bootstrap
-* Pug
 * interactive
 
 ### Back-end Skills
