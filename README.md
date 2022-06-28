@@ -27,6 +27,7 @@
 
 ## 도움을 주신 분들 ♥
 * Javascript: Egoing Lee - 생활코딩
+* Typescript: 장기효(캡틴판교) - 인프런
 * Vue.js: 장기효(캡틴판교) - 인프런
 * 자료구조, 알고리즘: 김태원 - 인프런
 * Node.js: 조현영 - 인프런
