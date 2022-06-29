@@ -7,10 +7,11 @@ function getUnixTimestamp(date: Date) {
 }
 
 // DOM
-const confirmedTotal = $('.confirmed-total');
-const deathsTotal = $('.deaths');
-const recoveredTotal = $('.recovered');
-const lastUpdatedTime = $('.last-updated-time');
+var a: Element | HTMLElement | HTMLParagraphElement
+const confirmedTotal = $('.confirmed-total') as HTMLSpanElement;
+const deathsTotal = $('.deaths') as HTMLParagraphElement;
+const recoveredTotal = $('.recovered') as HTMLParagraphElement;
+const lastUpdatedTime = $('.last-updated-time') as HTMLParagraphElement;
 const rankList = $('.rank-list');
 const deathsList = $('.deaths-list');
 const recoveredList = $('.recovered-list');
@@ -42,8 +43,14 @@ function fetchCovidSummary() {
   return axios.get(url);
 }
 
-function fetchCountryInfo(countryCode: any, status: any) {
-  // params: confirmed, recovered, deaths
+enum CovidStatus {
+  confirmed = 'confirmed',
+  recovered = 'recovered',
+  deaths = 'deaths',
+};
+
+function fetchCountryInfo(countryCode: string, status: CovidStatus) {
+  // status params: confirmed, recovered, deaths
   const url = `https://api.covid19api.com/country/${countryCode}/status/${status}`;
   return axios.get(url);
 }
@@ -77,14 +84,14 @@ async function handleListClick(event: any) {
   clearRecoveredList();
   startLoadingAnimation();
   isDeathLoading = true;
-  const { data: deathResponse } = await fetchCountryInfo(selectedId, 'deaths');
+  const { data: deathResponse } = await fetchCountryInfo(selectedId, CovidStatus.deaths);
   const { data: recoveredResponse } = await fetchCountryInfo(
     selectedId,
-    'recovered',
+    CovidStatus.recovered,
   );
   const { data: confirmedResponse } = await fetchCountryInfo(
     selectedId,
-    'confirmed',
+    CovidStatus.confirmed,
   );
   endLoadingAnimation();
   setDeathsList(deathResponse);
