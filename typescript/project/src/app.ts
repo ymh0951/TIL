@@ -1,3 +1,12 @@
+// // 라이브러리 로딩
+// import 변수명 from '라이브러리 이름';
+// // 변수, 함수 임포트 문법
+// import {} from '파일 상대 경로';
+import axios, { Axios, AxiosResponse } from 'axios';
+import * as Chart from 'chart.js';
+// 타입 모듈
+import { CovidSummaryResponse } from './covid/index';
+
 // utils
 function $(selector: string) {
   return document.querySelector(selector);
@@ -7,7 +16,7 @@ function getUnixTimestamp(date: Date) {
 }
 
 // DOM
-var a: Element | HTMLElement | HTMLParagraphElement
+// let a: Element | HTMLElement | HTMLParagraphElement;
 const confirmedTotal = $('.confirmed-total') as HTMLSpanElement;
 const deathsTotal = $('.deaths') as HTMLParagraphElement;
 const recoveredTotal = $('.recovered') as HTMLParagraphElement;
@@ -18,12 +27,12 @@ const recoveredList = $('.recovered-list');
 const deathSpinner = createSpinnerElement('deaths-spinner');
 const recoveredSpinner = createSpinnerElement('recovered-spinner');
 
-function createSpinnerElement(id: string) {  
+function createSpinnerElement(id: string) {
   const wrapperDiv = document.createElement('div');
   wrapperDiv.setAttribute('id', id);
   wrapperDiv.setAttribute(
     'class',
-    'spinner-wrapper flex justify-center align-center',
+    'spinner-wrapper flex justify-center align-center'
   );
   const spinnerDiv = document.createElement('div');
   spinnerDiv.setAttribute('class', 'ripple-spinner');
@@ -35,19 +44,20 @@ function createSpinnerElement(id: string) {
 
 // state
 let isDeathLoading = false;
-let isRecoveredLoading = false;
+const isRecoveredLoading = false;
 
 // api
-function fetchCovidSummary() {
+function fetchCovidSummary(): Promise<AxiosResponse<CovidSummaryResponse>> {
   const url = 'https://api.covid19api.com/summary';
   return axios.get(url);
 }
+fetchCovidSummary().then(res => res.data.)
 
 enum CovidStatus {
   confirmed = 'confirmed',
   recovered = 'recovered',
   deaths = 'deaths',
-};
+}
 
 function fetchCountryInfo(countryCode: string, status: CovidStatus) {
   // status params: confirmed, recovered, deaths
@@ -84,14 +94,17 @@ async function handleListClick(event: any) {
   clearRecoveredList();
   startLoadingAnimation();
   isDeathLoading = true;
-  const { data: deathResponse } = await fetchCountryInfo(selectedId, CovidStatus.deaths);
+  const { data: deathResponse } = await fetchCountryInfo(
+    selectedId,
+    CovidStatus.deaths
+  );
   const { data: recoveredResponse } = await fetchCountryInfo(
     selectedId,
-    CovidStatus.recovered,
+    CovidStatus.recovered
   );
   const { data: confirmedResponse } = await fetchCountryInfo(
     selectedId,
-    CovidStatus.confirmed,
+    CovidStatus.confirmed
   );
   endLoadingAnimation();
   setDeathsList(deathResponse);
@@ -104,7 +117,7 @@ async function handleListClick(event: any) {
 
 function setDeathsList(data: any) {
   const sorted = data.sort(
-    (a: any, b: any) => getUnixTimestamp(b.Date) - getUnixTimestamp(a.Date),
+    (a: any, b: any) => getUnixTimestamp(b.Date) - getUnixTimestamp(a.Date)
   );
   sorted.forEach((value: any) => {
     const li = document.createElement('li');
@@ -130,7 +143,7 @@ function setTotalDeathsByCountry(data: any) {
 
 function setRecoveredList(data: any) {
   const sorted = data.sort(
-    (a: any, b: any) => getUnixTimestamp(b.Date) - getUnixTimestamp(a.Date),
+    (a: any, b: any) => getUnixTimestamp(b.Date) - getUnixTimestamp(a.Date)
   );
   sorted.forEach((value: any) => {
     const li = document.createElement('li');
@@ -141,7 +154,7 @@ function setRecoveredList(data: any) {
     const p = document.createElement('p');
     p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
     li.appendChild(span);
-    li.appendChild(p); 
+    li.appendChild(p);
     recoveredList.appendChild(li);
   });
 }
@@ -174,7 +187,7 @@ async function setupData() {
 }
 
 function renderChart(data: any, labels: any) {
-  var ctx = $('#lineChart').getContext('2d');
+  const ctx = $('#lineChart').getContext('2d');
   Chart.defaults.global.defaultFontColor = '#f5eaea';
   Chart.defaults.global.defaultFontFamily = 'Exo 2';
   new Chart(ctx, {
@@ -198,34 +211,36 @@ function setChartData(data: any) {
   const chartData = data.slice(-14).map((value: any) => value.Cases);
   const chartLabel = data
     .slice(-14)
-    .map((value: any) => new Date(value.Date).toLocaleDateString().slice(5, -1));
+    .map((value: any) =>
+      new Date(value.Date).toLocaleDateString().slice(5, -1)
+    );
   renderChart(chartData, chartLabel);
 }
 
 function setTotalConfirmedNumber(data: any) {
   confirmedTotal.innerText = data.Countries.reduce(
     (total: any, current: any) => (total += current.TotalConfirmed),
-    0,
+    0
   );
 }
 
 function setTotalDeathsByWorld(data: any) {
   deathsTotal.innerText = data.Countries.reduce(
     (total: any, current: any) => (total += current.TotalDeaths),
-    0,
+    0
   );
 }
 
 function setTotalRecoveredByWorld(data: any) {
   recoveredTotal.innerText = data.Countries.reduce(
     (total: any, current: any) => (total += current.TotalRecovered),
-    0,
+    0
   );
 }
 
 function setCountryRanksByConfirmedCases(data: any) {
   const sorted = data.Countries.sort(
-    (a: any, b: any) => b.TotalConfirmed - a.TotalConfirmed,
+    (a: any, b: any) => b.TotalConfirmed - a.TotalConfirmed
   );
   sorted.forEach((value: any) => {
     const li = document.createElement('li');
