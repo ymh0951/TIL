@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>const, let</title>
+</head>
+<body>
+    <script>
+        function f() {
+            {
+                let x;
+                {
+                    // 새로운 블럭안에 새로운 x의 스코프가 생김
+                    const x = "sneaky";
+                    x = 'foo'; // 위에 이미 connst로 x를 선언했으므로 다시 값을 대입하면 에러 발생
+                }
+                // 이전 블록 범위로 돌아왔기 때문에 'let x'에 해당하는 메모리에 값을 대입
+                x = "bar";
+                let x = "inner"; // Uncaught SyntaxError: Identifier 'x' has already been declared
+            }
+        }
+    </script>
+</body>
+</html>

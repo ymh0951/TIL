@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hoisting</title>
+</head>
+<body>
+    <script>
+        var sum = 5;
+        sum = sum + i;
+        function sumAllNumbers() {
+            // ...
+        }
+        var i = 10;
+        /* 실행 결과
+        #1 - 함수 선언식과 변수 선언을 hoisting
+        var sum;
+        function sumAllNumbers() {
+            // ...
+        }
+
+        // #2 - 변수 대입 및 할당
+        sum = 5;
+        sum = sum + i;
+        i = 10; */
+    </script>
+</body>
+</html>

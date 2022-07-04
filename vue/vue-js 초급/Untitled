@@ -1,0 +1,16 @@
+자바스크립트의 비동기 처리 패턴
+1. callback
+2. promise
+3. promise + generator
+4. async & await
+
+[Vue CLI 2.x]
+vue init '프로젝트 템플릿 유형' '프로젝트 폴더 위치'
+vue init webpack-simple '프로젝트 폴더 위치'
+
+[Vue CLI 3.x]
+vue create '프로젝트 폴더 위치'
+
+vue.cmd create vue-cli
+cd vue-cli
+npm run serve (vue-cli-service serve)

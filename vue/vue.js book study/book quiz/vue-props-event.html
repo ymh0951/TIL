@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../vue.js"></script>
+    <title>Vue props와 $emit 예제</title>
+</head>
+<body>
+    <div id="app">
+        <child-component v-bind:propsdata="message"></child-component>
+        <sibling-component v-bind:propssibling="anotherMessage"></sibling-component>
+    </div>
+    <script>
+        Vue.component(
+            'sibling-component', {
+                props: ['propssibling'],
+                template: '<p>{{ propssibling }}</p>',
+            },
+        )
+        Vue.component(
+           'child-component', {
+            props: ['propsdata'],
+            template: '<p>{{ propsdata }}</p>'
+        }
+        )
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue! passed from Parent Component',
+                anotherMessage: '안녕 뷰!'
+            }
+        });
+    </script>
+</body>
+</html>
