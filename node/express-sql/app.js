@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const nunjucks = require('nunjucks');
-const hi = require('hi')
 
 const { sequelize } = require('./models');
 const indexRouter = require('./routes/index');
