@@ -3,7 +3,7 @@
 원래 레파지토리를 따로 만들어서 공부를 했었으나, 안쓰는 레파지토지도 많고 난잡해보여서 하나로 통합합니다.
 
 ## 현재 민호의 스킬 🚀
-### Front-end Skills
+### Front-end Stack
 * HTML5
 * CSS3
 * Javascript
@@ -16,7 +16,7 @@
 * Bootstrap
 * interactive
 
-### Back-end Skills
+### Back-end Stack
 * Node.js
 * Express
 * MySQL
