@@ -12,6 +12,7 @@
 * Vue.js
 * Vue-router
 * Vuex
+* Nuxt
 * Webpack
 * Bootstrap
 * interactive
