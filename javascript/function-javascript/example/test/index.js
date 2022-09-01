@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 
-Object.assign(global, require('../index.js'));
+Object.assign(global, require('../../index.js'));
 
 describe('take', function () {
   it('take(1, [1, 2, 3])', () => {
