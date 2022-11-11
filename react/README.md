@@ -2,7 +2,7 @@
 * React.js
 
 ## 도움을 주신 분
-React.js: 진유림 - 인프런
+React.js: 진유림 - 인프런<br>
 React.js: John Ahn - 인프런
 
 ### Node.js 강의 기록
