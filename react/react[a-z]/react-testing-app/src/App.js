@@ -2,9 +2,9 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  hello();
-
   let hello = () => {};
+  
+  hello();
 
   return (
     <div className="App">
