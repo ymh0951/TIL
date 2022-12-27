@@ -96,7 +96,6 @@ class DoublyLinkedList {
             this.tail.prev.next = null;
             this.tail = this.tail.prev;
             this.count--;
-            return deletedNode;
         } else {
             for (let i = 0; i < index - 1; i++) {
                 currentNode = currentNode.next;
